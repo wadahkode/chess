@@ -33,8 +33,10 @@ body {
 
 .black-slot,
 .white-slot {
-  width: 60px;
-  height: 60px;
+  min-width: 60px;
+  max-width: 40px;
+  min-height: 60px;
+  max-height: 40px;
   border: 1px solid rgba(0, 0, 0, 0.76);
   display: flex;
   align-items: center;
@@ -49,6 +51,8 @@ body {
 .white-slot img {
   object-fit: cover;
   cursor: pointer;
+  min-width: 46px;
+  max-width: 32px;
 }
 
 .white-slot {

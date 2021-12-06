@@ -73,37 +73,37 @@ const figures = [
   "",
   "",
   // Pion
-  `<img src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
+  `<img id="g-1" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
   // Pion
-  `<img src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
+  `<img id="g-2" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
   // Pion
-  `<img src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
+  `<img id="g-3" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
   // Pion
-  `<img src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
+  `<img id="g-4" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
   // Pion
-  `<img src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
+  `<img id="g-5" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
   // Pion
-  `<img src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
+  `<img id="g-6" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
   // Pion
-  `<img src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
+  `<img id="g-7" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
   // Pion
-  `<img src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
+  `<img id="g-8" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/chess-com.png"/>`,
   // Benteng
-  `<img src="https://img.icons8.com/nolan/48/rook.png"/>`,
+  `<img id="h-1" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/rook.png"/>`,
   // Kuda
-  `<img src="https://img.icons8.com/nolan/48/knight.png"/>`,
+  `<img id="h-2" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/knight.png"/>`,
   // Luncur
-  `<img src="https://img.icons8.com/nolan/48/bishop.png"/>`,
+  `<img id="h-3" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/bishop.png"/>`,
   // Raja
-  `<img src="https://img.icons8.com/nolan/48/king.png"/>`,
+  `<img id="h-4" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/king.png"/>`,
   // Ratu
-  `<img src="https://img.icons8.com/nolan/48/queen.png"/>`,
+  `<img id="h-5" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/queen.png"/>`,
   // Luncur
-  `<img src="https://img.icons8.com/nolan/48/bishop.png"/>`,
+  `<img id="h-6" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/bishop.png"/>`,
   // Kuda
-  `<img src="https://img.icons8.com/nolan/48/knight.png"/>`,
+  `<img id="h-7" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/knight.png"/>`,
   // Benteng
-  `<img src="https://img.icons8.com/nolan/48/rook.png"/>`,
+  `<img id="h-8" draggable="true" ondragstart="window.utils.captureMouse(event)" src="https://img.icons8.com/nolan/48/rook.png"/>`,
 ];
 
 function getChessBoard() {
@@ -139,8 +139,31 @@ document.addEventListener("DOMContentLoaded", function () {
     slots.className = item;
     slots.innerHTML = figures[key];
 
+    slots.key = key;
+    slots.ondrop = window.utils.getCaptureMouse;
+    slots.ondragover = window.utils.allowCapture;
+
     chessBoard.appendChild(slots);
   });
 
   frame.appendChild(chessBoard);
 });
+
+window.utils = {};
+
+window.utils.allowCapture = (e) => e.preventDefault();
+
+window.utils.captureMouse = function (e) {
+  e.dataTransfer.setData("text", e.target.id);
+};
+
+window.utils.getCaptureMouse = (e) => {
+  let data = document.getElementById(e.dataTransfer.getData("text"));
+  let target = e.target;
+
+  if (target.key == undefined) {
+    return false;
+  }
+
+  e.target.appendChild(data);
+};
