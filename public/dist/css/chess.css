@@ -1,0 +1,137 @@
+/**
+ * Chess stylesheet
+ *
+ * @author wadahkode <mvp.dedefilaras@gmail.com>
+ * @since version 0.0.1
+ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: radial-gradient(
+    rgb(37, 35, 35) 5%,
+    rgb(59, 59, 59) 15%,
+    rgb(0, 0, 0) 60%
+  );
+  height: 100vh;
+  overflow-y: hidden;
+  animation: bgEffect;
+  animation-duration: 5s;
+  animation-delay: 0.2s;
+  animation-iteration-count: infinite;
+}
+
+header {
+  width: 500px;
+  color: white;
+  margin: 0 auto;
+}
+
+nav {
+  margin: 3rem auto;
+  font-size: 16pt;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chess-board {
+  background-color: rgba(255, 255, 255, 0.945);
+  width: max-content;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  box-shadow: 0 0 2rem rgba(37, 37, 37, 0.884);
+  border-radius: 4px;
+}
+
+.black-slot,
+.white-slot {
+  min-width: 60px;
+  max-width: 40px;
+  min-height: 60px;
+  max-height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.76);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.black-slot {
+  background-color: #5d4037;
+}
+
+.black-slot img,
+.white-slot img {
+  object-fit: cover;
+  cursor: pointer;
+  min-width: 46px;
+  max-width: 32px;
+}
+
+.white-slot {
+  background-color: #212121;
+}
+
+.btn-stop-audio {
+  background-color: #000;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 2rem;
+  color: white;
+  box-shadow: 0 0 1rem #ccc;
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.btn-stop-audio:hover {
+  background-color: rgba(0, 0, 0, 0.822);
+  transform: scale(1.1);
+}
+
+@keyframes bgEffect {
+  0% {
+    background-image: radial-gradient(
+      rgb(37, 35, 35) 5%,
+      rgb(59, 59, 59) 15%,
+      rgb(0, 0, 0) 25%
+    );
+  }
+
+  50% {
+    background-image: radial-gradient(
+      rgb(37, 35, 35) 5%,
+      rgb(59, 59, 59) 15%,
+      rgb(0, 0, 0) 35%
+    );
+  }
+
+  75% {
+    background-image: radial-gradient(
+      rgb(37, 35, 35) 5%,
+      rgb(59, 59, 59) 15%,
+      rgb(0, 0, 0) 45%
+    );
+  }
+
+  100% {
+    background-image: radial-gradient(
+      rgb(37, 35, 35) 5%,
+      rgb(59, 59, 59) 15%,
+      rgb(0, 0, 0) 60%
+    );
+  }
+}

@@ -1,4 +1,10 @@
 .idea
 
+node_modules
+
+dist.lost
 dist/icons
 dist/js/chess.js.bak
+
+public/dist/*
+!css
