@@ -1,6 +1,7 @@
 import { PiecesEvent } from "./event/PiecesEvent";
 import { ChessBoard } from "./ui/ChessBoard";
 import bgSound from "./ui/assets/bg-music.mp3";
+import piecesSound from "./ui/assets/pieces-sound.wav";
 
 /**
  * Chess Javascript
@@ -16,15 +17,46 @@ class App {
       PiecesEvent,
     };
     this.audio = null;
+    this.audioMove = null;
+    this.slotAllowed = []
 
     this.root = arguments[0] instanceof Object ? arguments[0] : "";
     this.root.className = "container";
   }
 
+  allowCaptureMouse(event) {
+    event.preventDefault();
+  }
+
+  componentDidMount() {
+    const piecesList = this.chessEvent.PiecesEvent.getPieces()
+
+    piecesList.forEach(pieces => {
+      pieces.ondrop = event => this.getCaptureMouse(event, this);
+      pieces.ondragover = this.allowCaptureMouse
+
+      this.slotAllowed.push(pieces.id)
+    })
+  }
+
+  getCaptureMouse(event, app) {
+    const piecesEvent = app.chessEvent.PiecesEvent;
+    const pieces = document.getElementById(event.dataTransfer.getData("id"))
+
+    let status = event.target.appendChild(pieces)
+
+    if (status instanceof HTMLElement) {
+      app.audioMove = document.createElement("audio")
+      app.audioMove.src = "dist/audio/" + piecesSound
+      app.audioMove.autoplay = true;
+      app.audioMove.controls = false;
+    }
+  }
+
   setBackgroundSound() {
     const audio = document.createElement("audio");
     audio.src = "dist/audio/" + bgSound;
-    audio.autoplay = true;
+    audio.autoplay = false;
     audio.controls = false;
     audio.loop = true;
 
@@ -61,6 +93,7 @@ class App {
     }
 
     this.root.appendChild(ChessBoard());
+    this.componentDidMount();
   }
 }
 

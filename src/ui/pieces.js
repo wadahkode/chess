@@ -12,10 +12,28 @@ import rookWhite from "./assets/rook-white.png";
 import rookBlack from "./assets/rook-black.png";
 
 export const Pieces = {
-  pawn: [pawnWhite, pawnBlack],
-  knight: [knightWhite, knightBlack],
-  bishop: [bishopWhite, bishopBlack],
-  queen: [queenWhite, queenBlack],
-  king: [kingWhite, kingBlack],
-  rook: [rookWhite, rookBlack],
+  pawn: [
+    `<img src="${pawnWhite}" />`,
+    `<img src="${pawnBlack}" />`
+   ],
+  knight: [
+    `<img src="${knightWhite}" />`,
+    `<img src="${knightBlack}" />`
+  ],
+  bishop: [
+    `<img src="${bishopWhite}" />`,
+    `<img src="${bishopBlack}" />`
+  ],
+  queen: [
+    `<img src="${queenWhite}" />`,
+    `<img src="${queenBlack}" />`
+  ],
+  king: [
+    `<img src="${kingWhite}" />`,
+    `<img src="${kingBlack}" />`
+  ],
+  rook: [
+    `<img src="${rookWhite}" />`,
+    `<img src="${rookBlack}" />`
+  ],
 };

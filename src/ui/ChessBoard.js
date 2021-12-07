@@ -47,29 +47,49 @@ export const ChessBoard = () => {
   //? Frame
   for (let i = 0; i < 8; i++) {
     i % 2 != 0
-      ? setChessBoard("white-slot", "black-slot")
-      : setChessBoard("black-slot", "white-slot");
+      ? setChessBoard("white-slot slot", "black-slot slot")
+      : setChessBoard("black-slot slot", "white-slot slot");
   }
+
+  const abjad = ["a","b","c","d","e","f","g","h"]
 
   board.map((className, key) => {
     const slots = document.createElement("div");
-    const img = document.createElement("img");
-    let name = "";
-
+    slots.id = key >= 16 && key < 24
+      ? abjad[2] + "-" + ((key % 8) + 1)
+      : key >= 24 && key < 32
+      ? abjad[3] + "-" + ((key % 8) + 1)
+      : key >= 32 && key < 40
+      ? abjad[4] + "-" + ((key % 8) + 1)
+      : key >= 40 && key < 48
+      ? abjad[5] + "-" + ((key % 8) + 1)
+      : ""
     slots.className = className;
+    let name = "";
 
     if (pieces.black[key]) {
       name = pieces.black[key];
-      img.src = Pieces[name] != undefined && Pieces[name][1];
-
+      slots.innerHTML = Pieces[name] != undefined && Pieces[name][1];
       pieces.white.unshift("", "", "");
     } else if (pieces.white[key]) {
       name = pieces.white[key];
-
-      img.src = Pieces[name] != undefined && Pieces[name][0];
+      slots.innerHTML = Pieces[name] != undefined && Pieces[name][0];
     }
 
-    slots.appendChild(img);
+    let img = slots.querySelector("img");
+
+    if (img instanceof HTMLElement) {
+      img.id = key < 1 || key < 8
+        ? abjad[0] + "-" + ((key % 8) + 1)
+        : key < 9 || key < 16
+        ? abjad[1] + "-" + ((key % 8) + 1)
+        : key < 48 || key < 56
+        ? abjad[6] + "-" + ((key % 8) + 1)
+        : abjad[7] + "-" + ((key % 8) + 1)
+
+      img.draggable = true
+    }
+
     frame.appendChild(slots);
     main.appendChild(frame);
   });

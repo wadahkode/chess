@@ -8,4 +8,4 @@ import App from "./App";
  * @author wadahkode <mvp.dedefilaras@gmail.com>
  * @since version 0.0.1
  */
-new App(document.getElementById("root")).render();
+new App(document.getElementById("root")).render()
