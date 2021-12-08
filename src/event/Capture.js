@@ -1,11 +1,12 @@
-import { PiecesEvent } from "./PiecesEvent";
+import { PiecesConfig } from "../config/pieces.config";
+import piecesSound from "../ui/assets/pieces-sound.wav";
 
-export const allowCaptureMouse = (e) => {
-  e.preventDefault();
-};
+let audioMove = null;
+
+export const allowCaptureMouse = (e) => e.preventDefault();
 
 export const startCaptureMouse = (event, { name, slot }) => {
-  const { checkMovePieces } = PiecesEvent;
+  const { checkMovePieces } = PiecesConfig;
   const pieces = event.target;
 
   checkMovePieces[name].slot[slot][pieces.id].map((slot) => {
@@ -18,7 +19,7 @@ export const startCaptureMouse = (event, { name, slot }) => {
 };
 
 export const endCaptureMouse = (event, { name, slot }) => {
-  const { checkMovePieces } = PiecesEvent;
+  const { checkMovePieces } = PiecesConfig;
   const pieces = event.target;
 
   checkMovePieces[name].slot[slot][pieces.id].map((slot) => {
@@ -29,22 +30,21 @@ export const endCaptureMouse = (event, { name, slot }) => {
 };
 
 export const getCaptureMouse = (event) => {
-  const { checkMovePieces } = PiecesEvent;
+  const { checkMovePieces } = PiecesConfig;
   const dataId = event.dataTransfer.getData("id");
   const data = document.getElementById(dataId);
 
   checkMovePieces[data.name].slot[data.dataset.target][dataId].map((slot) => {
-    const s = document.getElementById(event.target.id);
+    // Terjun bebas dulu
+    let status = event.target.appendChild(data);
 
-    if (
-      s.id == "b-1" ||
-      s.id == "c-1" ||
-      s.id == "d-1" ||
-      (s.id == "h-1" && s.childNodes.length < 1)
-    ) {
-      return false;
+    if (status instanceof HTMLElement) {
+      audioMove = document.createElement("audio");
+      audioMove.src = "dist/audio/" + piecesSound;
+      audioMove.autoplay = true;
+      audioMove.controls = false;
+
+      event.target.appendChild(audioMove);
     }
-
-    event.target.appendChild(data);
   });
 };

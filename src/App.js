@@ -1,9 +1,7 @@
-import { PiecesEvent } from "./event/PiecesEvent";
 import { ChessBoard } from "./ui/ChessBoard";
-import bgSound from "./ui/assets/bg-music.mp3";
-//? this move to ./event/Capture.js
-// import piecesSound from "./ui/assets/pieces-sound.wav";
 import { Player } from "./event/Player";
+import { PiecesConfig } from "./config/pieces.config";
+import bgSound from "./ui/assets/bg-music.mp3";
 
 /**
  * Chess Javascript
@@ -15,47 +13,10 @@ import { Player } from "./event/Player";
  */
 class App {
   constructor() {
-    this.chessEvent = {
-      PiecesEvent,
-    };
-    //? this move to ./event/Capture.js
-    // this.audio = null;
-    // this.audioMove = null;
-
+    this.audio = null;
     this.root = arguments[0] instanceof Object ? arguments[0] : "";
     this.root.className = "container";
   }
-
-  //? this move to ./event/Capture.js
-  // allowCaptureMouse(event) {
-  //   event.preventDefault();
-  // }
-
-  //? this rename and move to ./event/Capture.js
-  // componentDidMount() {
-  //   const piecesList = this.chessEvent.PiecesEvent.getPieces();
-
-  //   piecesList.forEach((pieces) => {
-  //     pieces.ondrop = (event) => this.getCaptureMouse(event, this);
-  //     pieces.ondragover = this.allowCaptureMouse;
-
-  //     this.slotAllowed.push(pieces.id);
-  //   });
-  // }
-
-  //? this move to ./event/Capture.js
-  // getCaptureMouse(event, app) {
-  //   const piecesEvent = app.chessEvent.PiecesEvent;
-  //   const pieces = document.getElementById(event.dataTransfer.getData("id"));
-
-  //   let status = event.target.appendChild(pieces);
-  //   if (status instanceof HTMLElement) {
-  //     app.audioMove = document.createElement("audio");
-  //     app.audioMove.src = "dist/audio/" + piecesSound;
-  //     app.audioMove.autoplay = true;
-  //     app.audioMove.controls = false;
-  //   }
-  // }
 
   setBackgroundSound() {
     const audio = document.createElement("audio");
@@ -99,7 +60,7 @@ class App {
 
     this.root.appendChild(ChessBoard());
 
-    return Player(this.chessEvent);
+    return Player(PiecesConfig);
   }
 }
 

@@ -3,6 +3,7 @@ import { terser } from "rollup-plugin-terser";
 import image from "@rollup/plugin-image";
 import url from "@rollup/plugin-url";
 import path from "path";
+import serve from "rollup-plugin-serve";
 
 export default {
   input: "src/index.js",
@@ -28,5 +29,6 @@ export default {
       sourceDir: __dirname,
       destDir: path.join(__dirname, "public/dist/audio"),
     }),
+    serve("public"),
   ],
 };

@@ -56,14 +56,14 @@ nav {
   border-radius: 4px;
 }
 
-#e-1.active,
-#e-2.active,
-#e-3.active,
-#e-4.active,
-#e-5.active,
-#e-6.active,
-#e-7.active,
-#e-8.active {
+#e1.active,
+#e2.active,
+#e3.active,
+#e4.active,
+#e5.active,
+#e6.active,
+#e7.active,
+#e8.active {
   background-image: linear-gradient(
     to right,
     rgba(119, 87, 28, 0.637),
@@ -71,14 +71,14 @@ nav {
   );
 }
 
-#f-1.active,
-#f-2.active,
-#f-3.active,
-#f-4.active,
-#f-5.active,
-#f-6.active,
-#f-7.active,
-#f-8.active {
+#f1.active,
+#f2.active,
+#f3.active,
+#f4.active,
+#f5.active,
+#f6.active,
+#f7.active,
+#f8.active {
   background-image: linear-gradient(
     to left,
     rgba(194, 157, 89, 0.473),

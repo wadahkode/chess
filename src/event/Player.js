@@ -1,14 +1,9 @@
-import {
-  allowCaptureMouse,
-  endCaptureMouse,
-  getCaptureMouse,
-  startCaptureMouse,
-} from "./Capture";
+import { endCaptureMouse, startCaptureMouse } from "./Capture";
 
 const slotBoard = () => document.querySelectorAll(".slot");
 
-export const Player = ({ PiecesEvent }) => {
-  const { checkPlayer } = PiecesEvent;
+export const Player = (PiecesConfig) => {
+  const { checkPlayer } = PiecesConfig;
   const config = {};
 
   slotBoard().forEach((item) => {
