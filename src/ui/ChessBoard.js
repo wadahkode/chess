@@ -3,6 +3,7 @@ import { PiecesConfig } from "../config/pieces.config";
 import { allowCaptureMouse, getCaptureMouse } from "../event/Capture";
 import { Pieces } from "./pieces";
 
+//? @suggest dicha
 const BOARD_SIZE = boardConfig.maxSize;
 const board = [];
 const columns = boardConfig.objColumn;
@@ -12,6 +13,7 @@ const slotBoard = boardConfig.slotName;
 export const ChessBoard = () => {
   const main = document.createElement("main");
 
+  //? @code from Om Jason Wihardja
   for (let i = 0; i < BOARD_SIZE; i += 2) {
     setChessBoard(...slotBoard);
     setChessBoard(...[...slotBoard].reverse());
@@ -22,6 +24,13 @@ export const ChessBoard = () => {
   return main;
 };
 
+/**
+ * Setter color for slot
+ *
+ * @param {*} head
+ * @param {*} tail
+ * @code from Om Jason Wihardja
+ */
 const setChessBoard = (head, tail) => {
   for (let i = 0; i < BOARD_SIZE; i += 2) {
     board.push(head, tail);
