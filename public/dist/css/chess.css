@@ -52,8 +52,24 @@ nav {
   height: max-content;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  box-shadow: 0 0 2rem rgba(37, 37, 37, 0.884);
+  box-shadow: 0 0 2rem rgba(66, 66, 66, 0.884);
   border-radius: 4px;
+}
+
+#e-1.active {
+  background-image: linear-gradient(
+    to right,
+    rgba(119, 87, 28, 0.637),
+    rgba(219, 148, 15, 0.582)
+  );
+}
+
+#f-1.active {
+  background-image: linear-gradient(
+    to left,
+    rgba(194, 157, 89, 0.473),
+    rgba(219, 148, 15, 0.281)
+  );
 }
 
 .black-slot,
@@ -69,7 +85,11 @@ nav {
 }
 
 .black-slot {
-  background-color: #5d4037;
+  background-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.932),
+    rgba(0, 0, 0, 0.904)
+  );
 }
 
 .black-slot img,
@@ -80,8 +100,17 @@ nav {
   max-width: 32px;
 }
 
+.slot img.active {
+  transform: translate(5px, -10px);
+  transition: 0.5s all;
+}
+
 .white-slot {
-  background-color: #212121;
+  background-image: linear-gradient(
+    to right,
+    rgba(228, 228, 228, 0.938),
+    rgba(179, 179, 179, 0.815)
+  );
 }
 
 .btn-stop-audio {

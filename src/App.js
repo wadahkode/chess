@@ -1,7 +1,9 @@
 import { PiecesEvent } from "./event/PiecesEvent";
 import { ChessBoard } from "./ui/ChessBoard";
 import bgSound from "./ui/assets/bg-music.mp3";
-import piecesSound from "./ui/assets/pieces-sound.wav";
+//? this move to ./event/Capture.js
+// import piecesSound from "./ui/assets/pieces-sound.wav";
+import { Player } from "./event/Player";
 
 /**
  * Chess Javascript
@@ -16,46 +18,49 @@ class App {
     this.chessEvent = {
       PiecesEvent,
     };
-    this.audio = null;
-    this.audioMove = null;
-    this.slotAllowed = []
+    //? this move to ./event/Capture.js
+    // this.audio = null;
+    // this.audioMove = null;
 
     this.root = arguments[0] instanceof Object ? arguments[0] : "";
     this.root.className = "container";
   }
 
-  allowCaptureMouse(event) {
-    event.preventDefault();
-  }
+  //? this move to ./event/Capture.js
+  // allowCaptureMouse(event) {
+  //   event.preventDefault();
+  // }
 
-  componentDidMount() {
-    const piecesList = this.chessEvent.PiecesEvent.getPieces()
+  //? this rename and move to ./event/Capture.js
+  // componentDidMount() {
+  //   const piecesList = this.chessEvent.PiecesEvent.getPieces();
 
-    piecesList.forEach(pieces => {
-      pieces.ondrop = event => this.getCaptureMouse(event, this);
-      pieces.ondragover = this.allowCaptureMouse
+  //   piecesList.forEach((pieces) => {
+  //     pieces.ondrop = (event) => this.getCaptureMouse(event, this);
+  //     pieces.ondragover = this.allowCaptureMouse;
 
-      this.slotAllowed.push(pieces.id)
-    })
-  }
+  //     this.slotAllowed.push(pieces.id);
+  //   });
+  // }
 
-  getCaptureMouse(event, app) {
-    const piecesEvent = app.chessEvent.PiecesEvent;
-    const pieces = document.getElementById(event.dataTransfer.getData("id"))
+  //? this move to ./event/Capture.js
+  // getCaptureMouse(event, app) {
+  //   const piecesEvent = app.chessEvent.PiecesEvent;
+  //   const pieces = document.getElementById(event.dataTransfer.getData("id"));
 
-    let status = event.target.appendChild(pieces)
-
-    if (status instanceof HTMLElement) {
-      app.audioMove = document.createElement("audio")
-      app.audioMove.src = "dist/audio/" + piecesSound
-      app.audioMove.autoplay = true;
-      app.audioMove.controls = false;
-    }
-  }
+  //   let status = event.target.appendChild(pieces);
+  //   if (status instanceof HTMLElement) {
+  //     app.audioMove = document.createElement("audio");
+  //     app.audioMove.src = "dist/audio/" + piecesSound;
+  //     app.audioMove.autoplay = true;
+  //     app.audioMove.controls = false;
+  //   }
+  // }
 
   setBackgroundSound() {
     const audio = document.createElement("audio");
     audio.src = "dist/audio/" + bgSound;
+    //! If you set audio.autoplay = true, background music will play and loop forever. ^(-!-)
     audio.autoplay = false;
     audio.controls = false;
     audio.loop = true;
@@ -93,7 +98,8 @@ class App {
     }
 
     this.root.appendChild(ChessBoard());
-    this.componentDidMount();
+
+    return Player(this.chessEvent);
   }
 }
 

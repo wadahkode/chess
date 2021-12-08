@@ -46,24 +46,27 @@ export const ChessBoard = () => {
 
   //? Frame
   for (let i = 0; i < 8; i++) {
-    i % 2 != 0
-      ? setChessBoard("white-slot slot", "black-slot slot")
-      : setChessBoard("black-slot slot", "white-slot slot");
+    if (i % 2 != 0) {
+      setChessBoard("black-slot slot black", "white-slot slot white");
+    } else {
+      setChessBoard("white-slot slot white", "black-slot slot black");
+    }
   }
 
-  const abjad = ["a","b","c","d","e","f","g","h"]
+  const abjad = ["a", "b", "c", "d", "e", "f", "g", "h"];
 
   board.map((className, key) => {
     const slots = document.createElement("div");
-    slots.id = key >= 16 && key < 24
-      ? abjad[2] + "-" + ((key % 8) + 1)
-      : key >= 24 && key < 32
-      ? abjad[3] + "-" + ((key % 8) + 1)
-      : key >= 32 && key < 40
-      ? abjad[4] + "-" + ((key % 8) + 1)
-      : key >= 40 && key < 48
-      ? abjad[5] + "-" + ((key % 8) + 1)
-      : ""
+    slots.id =
+      key >= 16 && key < 24
+        ? abjad[2] + "-" + ((key % 8) + 1)
+        : key >= 24 && key < 32
+        ? abjad[3] + "-" + ((key % 8) + 1)
+        : key >= 32 && key < 40
+        ? abjad[4] + "-" + ((key % 8) + 1)
+        : key >= 40 && key < 48
+        ? abjad[5] + "-" + ((key % 8) + 1)
+        : "";
     slots.className = className;
     let name = "";
 
@@ -79,15 +82,16 @@ export const ChessBoard = () => {
     let img = slots.querySelector("img");
 
     if (img instanceof HTMLElement) {
-      img.id = key < 1 || key < 8
-        ? abjad[0] + "-" + ((key % 8) + 1)
-        : key < 9 || key < 16
-        ? abjad[1] + "-" + ((key % 8) + 1)
-        : key < 48 || key < 56
-        ? abjad[6] + "-" + ((key % 8) + 1)
-        : abjad[7] + "-" + ((key % 8) + 1)
+      img.id =
+        key < 1 || key < 8
+          ? abjad[0] + "-" + ((key % 8) + 1)
+          : key < 9 || key < 16
+          ? abjad[1] + "-" + ((key % 8) + 1)
+          : key < 48 || key < 56
+          ? abjad[6] + "-" + ((key % 8) + 1)
+          : abjad[7] + "-" + ((key % 8) + 1);
 
-      img.draggable = true
+      img.draggable = true;
     }
 
     frame.appendChild(slots);
@@ -98,7 +102,7 @@ export const ChessBoard = () => {
   return main;
 };
 
-const setChessBoard = (first, last) => {
+const setChessBoard = (first = "", last = "") => {
   for (let i = 0; i < 8; i++) {
     board.push(i % 2 != 0 ? first : last);
   }
