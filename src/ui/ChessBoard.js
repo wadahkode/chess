@@ -1,3 +1,4 @@
+import { allowCaptureMouse, getCaptureMouse } from "../event/Capture";
 import { Pieces } from "./pieces";
 
 const pieces = {
@@ -95,6 +96,10 @@ export const ChessBoard = () => {
     }
 
     frame.appendChild(slots);
+
+    slots.addEventListener("drop", getCaptureMouse);
+    slots.addEventListener("dragover", allowCaptureMouse);
+
     main.appendChild(frame);
   });
   //? End Frame

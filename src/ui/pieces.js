@@ -13,27 +13,12 @@ import rookBlack from "./assets/rook-black.png";
 
 export const Pieces = {
   pawn: [
-    `<img src="${pawnWhite}" />`,
-    `<img src="${pawnBlack}" />`
-   ],
-  knight: [
-    `<img src="${knightWhite}" />`,
-    `<img src="${knightBlack}" />`
+    `<img name="pawn" data-target="white" src="${pawnWhite}" />`,
+    `<img name="pawn" data-target="black" src="${pawnBlack}" />`,
   ],
-  bishop: [
-    `<img src="${bishopWhite}" />`,
-    `<img src="${bishopBlack}" />`
-  ],
-  queen: [
-    `<img src="${queenWhite}" />`,
-    `<img src="${queenBlack}" />`
-  ],
-  king: [
-    `<img src="${kingWhite}" />`,
-    `<img src="${kingBlack}" />`
-  ],
-  rook: [
-    `<img src="${rookWhite}" />`,
-    `<img src="${rookBlack}" />`
-  ],
+  knight: [`<img src="${knightWhite}" />`, `<img src="${knightBlack}" />`],
+  bishop: [`<img src="${bishopWhite}" />`, `<img src="${bishopBlack}" />`],
+  queen: [`<img src="${queenWhite}" />`, `<img src="${queenBlack}" />`],
+  king: [`<img src="${kingWhite}" />`, `<img src="${kingBlack}" />`],
+  rook: [`<img src="${rookWhite}" />`, `<img src="${rookBlack}" />`],
 };

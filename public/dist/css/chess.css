@@ -56,7 +56,14 @@ nav {
   border-radius: 4px;
 }
 
-#e-1.active {
+#e-1.active,
+#e-2.active,
+#e-3.active,
+#e-4.active,
+#e-5.active,
+#e-6.active,
+#e-7.active,
+#e-8.active {
   background-image: linear-gradient(
     to right,
     rgba(119, 87, 28, 0.637),
@@ -64,7 +71,14 @@ nav {
   );
 }
 
-#f-1.active {
+#f-1.active,
+#f-2.active,
+#f-3.active,
+#f-4.active,
+#f-5.active,
+#f-6.active,
+#f-7.active,
+#f-8.active {
   background-image: linear-gradient(
     to left,
     rgba(194, 157, 89, 0.473),
@@ -100,7 +114,27 @@ nav {
   max-width: 32px;
 }
 
-.slot img.active {
+/* .slot img.active {
+  transform: translate(5px, -10px);
+  transition: 0.5s all;
+} */
+
+.slot img#g-1.active,
+.slot img#g-2.active,
+.slot img#g-3.active,
+.slot img#g-4.active,
+.slot img#g-5.active,
+.slot img#g-6.active,
+.slot img#g-7.active,
+.slot img#g-8.active,
+.slot img#h-1.active,
+.slot img#h-2.active,
+.slot img#h-3.active,
+.slot img#h-4.active,
+.slot img#h-5.active,
+.slot img#h-6.active,
+.slot img#h-7.active,
+.slot img#h-8.active {
   transform: translate(5px, -10px);
   transition: 0.5s all;
 }
