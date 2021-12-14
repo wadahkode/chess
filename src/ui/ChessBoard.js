@@ -1,6 +1,5 @@
 import { boardConfig } from "../config/board.config";
 import { PiecesConfig } from "../config/pieces.config";
-import { allowCaptureMouse, getCaptureMouse } from "../event/Capture";
 import { Pieces } from "./pieces";
 
 //? @suggest dicha
@@ -76,8 +75,8 @@ const getFrameBoard = () => {
     frame.appendChild(slots);
 
     // Add event captureMouse
-    slots.addEventListener("drop", getCaptureMouse);
-    slots.addEventListener("dragover", allowCaptureMouse);
+    // slots.addEventListener("drop", getCaptureMouse);
+    // slots.addEventListener("dragover", allowCaptureMouse);
   });
 
   frame.className = "chess-board";

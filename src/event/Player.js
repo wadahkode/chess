@@ -1,28 +1,37 @@
 import { endCaptureMouse, startCaptureMouse } from "./Capture";
+import { ChessAI } from "./ChessAI";
 
 const slotBoard = () => document.querySelectorAll(".slot");
+window.play = { game: false };
 
-export const Player = (PiecesConfig) => {
-  const { checkPlayer } = PiecesConfig;
-  const config = {};
+export const Player = () => {
+  const btnPlay = document.querySelectorAll(".button-play");
 
-  slotBoard().forEach((item) => {
-    const pieces = item.querySelector("img");
+  btnPlay.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (btn.classList.contains("ai")) {
+        btn.style.background = "green";
+        btn.style.color = "white";
 
-    if (pieces instanceof HTMLElement) {
-      if (checkPlayer.first.name == "white" && checkPlayer.first.play) {
-        config["firstMove"] = checkPlayer.first.play;
-        config["name"] = "pawn";
-        config["slot"] = "white";
+        window.play.game = true;
+        window.play.move = "com1";
+        window.play.firstMove = true;
 
-        pieces.addEventListener("dragstart", (event) =>
-          startCaptureMouse(event, config)
-        );
-
-        pieces.addEventListener("dragend", (event) =>
-          endCaptureMouse(event, config)
-        );
+        return ChessAI(slotBoard());
       }
-    }
+    });
   });
 };
+
+// const playWithAi = () => {
+//   if (!window.play.game) return false;
+
+//   slotBoard().forEach((item) => {
+//     const pieces = item.querySelector("img");
+
+//     if (pieces instanceof HTMLElement) {
+//       pieces.ondragstart = startCaptureMouse;
+//       pieces.ondragend = endCaptureMouse;
+//     }
+//   });
+// };

@@ -23,14 +23,24 @@ export const PiecesConfig = {
     pawn: {
       slot: {
         white: {
-          "g-1": ["e1", "f1"],
-          "g-2": ["e2", "f2"],
-          "g-3": ["e3", "f3"],
-          "g-4": ["e4", "f4"],
-          "g-5": ["e5", "f5"],
-          "g-6": ["e6", "f6"],
-          "g-7": ["e7", "f7"],
-          "g-8": ["e8", "f8"],
+          firstMove: {
+            "g-1": ["e1", "f1"],
+            "g-2": ["e2", "f2"],
+            "g-3": ["e3", "f3"],
+            "g-4": ["e4", "f4"],
+            "g-5": ["e5", "f5"],
+            "g-6": ["e6", "f6"],
+            "g-7": ["e7", "f7"],
+            "g-8": ["e8", "f8"],
+          },
+          "g-1": ["d1"],
+          "g-2": ["d2"],
+          "g-3": ["d3"],
+          "g-4": ["d4"],
+          "g-5": ["d5"],
+          "g-6": ["d6"],
+          "g-7": ["d7"],
+          "g-8": ["d8"],
         },
         black: {
           "b-1": ["c1", "d1"],
@@ -68,6 +78,28 @@ export const PiecesConfig = {
         },
       },
     },
+    knight: {
+      slot: {
+        white: {
+          "h-2": ["f1", "f3"],
+          "h-7": ["f6", "f8"],
+        },
+        black: {
+          "a-2": ["a2", "c1", "c3"],
+          "a-7": ["a2", "c6", "c8"],
+        },
+      },
+    },
+    bishop: {
+      slot: {
+        white: {
+          "h-3": ["h3", "g2", "f1", "g4", "f5"],
+        },
+        black: {
+          "a-3": ["a3", "b2", "c1"],
+        },
+      },
+    },
   },
   checkMate: {
     white: false,
@@ -78,16 +110,12 @@ export const PiecesConfig = {
     white: false,
     black: false,
   },
-  checkPlayer: {
-    first: {
-      name: "white",
-      play: true,
-    },
-    last: {
-      name: "black",
-      play: false,
-    },
-  },
+  // checkPlayer: {
+  //   firstPlay: {
+  //     name: "pawn",
+  //     slot: "white",
+  //   },
+  // },
   pieces: {
     black: [
       "rook",

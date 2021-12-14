@@ -4,6 +4,7 @@ import image from "@rollup/plugin-image";
 import url from "@rollup/plugin-url";
 import path from "path";
 import serve from "rollup-plugin-serve";
+import livereload from "rollup-plugin-livereload";
 
 export default {
   input: "src/index.js",
@@ -29,6 +30,10 @@ export default {
       sourceDir: __dirname,
       destDir: path.join(__dirname, "public/dist/audio"),
     }),
-    serve("public"),
+    serve({
+      open: true,
+      contentBase: "./public",
+    }),
+    livereload(),
   ],
 };
