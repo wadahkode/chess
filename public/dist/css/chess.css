@@ -59,40 +59,59 @@ nav ul li button:focus {
 }
 
 #root {
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 2rem;
-  /* margin-top: -2.5rem; */
+  height: 100vh;
 }
 
 #root div:nth-child(2) {
   position: relative;
 }
 
-.chess-body {
+.history-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chess {
   background-color: #000;
   color: white;
-  padding: 0.75rem 1rem;
+  /* padding: 0.75rem 1rem; */
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 1rem;
   position: absolute;
-  width: 100%;
+  height: auto;
   bottom: -100vh;
+}
+
+.chess > .player-1,
+.chess > .player-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.chess .score {
+  display: inline-flex;
+  gap: 1rem;
 }
 
 hr {
   border: 1px solid rgba(26, 25, 25, 0.945);
 }
 
-.chess-body .btn-exit-game {
+.btn-exit-game {
   background-color: rgba(255, 0, 0, 0.884);
   border: none;
   padding: 0.5rem;
-  border-radius: 5px;
+  border-radius: 2rem;
   color: white;
   cursor: pointer;
+}
+
+.btn-exit-game:hover {
+  transform: scale(1.1);
 }
 
 #chess-main {
@@ -118,17 +137,18 @@ hr {
   }
 }
 
-.chess-body div:nth-child(1) {
+/* .chess div:nth-child(1) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+  background: green;
+} */
 
-.chess-body h1 {
+.chess h1 {
   font-size: 18pt;
 }
 
-.chess-body ul {
+.chess ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -207,6 +227,32 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100vh;
+}
+
+.grid,
+.lg\:grid,
+.md\:grid {
+  display: grid;
+}
+
+@media only screen and (min-width: 901px) {
+  .lg\:grid.lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 900px) {
+  .md\:grid.md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(256px, 300px));
+  }
 }
 
 .chess-board {
@@ -302,6 +348,15 @@ hr {
   transition: 0.5s all;
 }
 
+.settings {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  display: none;
+  gap: 1rem;
+}
+
 .white-slot {
   background-image: linear-gradient(
     to right,
@@ -360,4 +415,8 @@ hr {
       rgb(0, 0, 0) 60%
     );
   }
+}
+
+.p-4 {
+  padding: 2rem;
 }

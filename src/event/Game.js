@@ -30,7 +30,7 @@ class Game {
     const audio = document.createElement("audio");
     audio.src = "dist/audio/" + bgSound;
     //! If you set audio.autoplay = true, background music will play and loop forever. ^(-!-)
-    audio.autoplay = false;
+    audio.autoplay = true;
     audio.controls = false;
     audio.loop = true;
 
@@ -51,9 +51,10 @@ class Game {
   }
 
   startWithAI() {
-    this.getBackgroundSound();
-
-    return new ChessWithAI({ board: this.board });
+    return new ChessWithAI({
+      board:
+        this.board.length < 1 ? document.querySelectorAll(".slot") : this.board,
+    });
   }
 }
 

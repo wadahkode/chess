@@ -1,4 +1,5 @@
-import App from "./App";
+import App from "./App.test";
+import * as DOM from "./utils";
 
 /**
  * Chess Javascript
@@ -8,6 +9,4 @@ import App from "./App";
  * @author wadahkode <mvp.dedefilaras@gmail.com>
  * @since version 0.0.1
  */
-const root = document.getElementById("root");
-
-new App(root).render();
+DOM.render(document.getElementById("root"), App);
